@@ -1,0 +1,2 @@
+# Drone-Delivery-Winch
+This repository contains software used to control a winch which is attached onto a 12kg capacity drone. The winch is used to deploy an unmanned ground rover to the ground quickly and safely. The software implements a PID controller in order to control the speed of descent. The software also includes a Python UI and a wireless Radio Frequency Communication system. This allows the user to manually control and program the winch from a remote location - all from a cleanly designed Python UI.
