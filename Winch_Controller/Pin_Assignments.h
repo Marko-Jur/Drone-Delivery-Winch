@@ -1,4 +1,3 @@
-
 #ifndef _PINASSIGNMENTS_H    
 #define _PINASSIGNMENTS_H   
 
@@ -8,6 +7,9 @@
 
 //motors & servos
 #define BRAKE_SERVO_PIN 7
-#define REEL_MOTOR_PIN 30
+#define REEL_MOTOR_PIN 5
+
+//Receiver 
+#define RCRX 6
 
 #endif

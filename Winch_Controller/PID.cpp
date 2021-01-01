@@ -17,6 +17,7 @@ float PID::_integrator;
 
 
 PID::PID(int32_t l_bound, int32_t u_bound, int32_t integrator_l_bound, int32_t integrator_u_bound, bool anti_windup_state)  {
+  Serial.println("Initialization FUCKING WORKS!!! O.O");
   _u_bound = u_bound;
   _l_bound = l_bound;
   if (anti_windup_state == true && (integrator_u_bound > integrator_l_bound)) {
@@ -34,20 +35,23 @@ PID::PID(int32_t l_bound, int32_t u_bound, int32_t integrator_l_bound, int32_t i
 }
 
 void PID::setConstants(float kP, float kI, float kD) {
+  Serial.println("Setting constants FUCKING WORKS!!! O.O");
   _gains.kP = kP;
   _gains.kI = kI;
   _gains.kD = kD;
-  if((_gains.kP != 0) && (_gains.kI != 0) && (_gains.kD != 0))
+  if((_gains.kP != 0) || (_gains.kI != 0) || (_gains.kD != 0))
     _gains_valid = true;
   else 
     _gains_valid = false;
 }
 
 bool PID::begin(int32_t op_period, struct control_array * control_vals){
+  Serial.println("Begin function FUCKING WORKS!!! O.O");
   if (_gains_valid == false || _bounds_valid == false || control_vals == NULL || op_period == 0){
     return false;
   }
   else{
+    Serial.println("Validation FUCKING WORKS!!! O.O");
     _control_vals = control_vals;
     _integrator = 0;
     _time_step_uS = op_period;
@@ -58,7 +62,6 @@ bool PID::begin(int32_t op_period, struct control_array * control_vals){
 
 void PID::controlLoop() {
 
-  Serial.println("control loop FUCKING WORKS!!!! O.O");
   float error = (_control_vals->target_val) - (_control_vals->current_val);
   float pid_out;
   

@@ -9,15 +9,15 @@ typedef struct encoder_data{
   uint16_t states_per_turn;
   
   //data out
-  float enc_speed_mps;
-  float enc_speed_rps;
-  float enc_position_m = 0;
-  long  enc_state = 0;
+  float speed_mps;
+  float speed_rps;
+  float position_m = 0;
+  long  state = 0;
 }encoder_data;
 
 //function declarations
 
-void resetEncoder();
+void resetEncoder(struct encoder_data * feedback_data);
 void readEncoder(struct encoder_data * feedback_data);
 
   
