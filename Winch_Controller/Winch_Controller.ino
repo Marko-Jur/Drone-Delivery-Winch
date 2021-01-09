@@ -17,7 +17,7 @@ PID speed_controller = PID(l_bound, u_bound, i_l_bound, i_u_bound, true);
 void setup() {
   Serial.begin(115200);
   speed_controller.setConstants(1.0, 0.0, 0.0);
-  speed_controller.begin(1000, &speed_PID_vals);
+  speed_controller.begin(1000, 15000, 5, &speed_PID_vals);
   
   resetEncoder(&enc_drum);
 
@@ -34,9 +34,12 @@ void loop() {
   speed_PID_vals.target_val = 1.5;
   speed_PID_vals.current_val = enc_drum.speed_mps;
   Serial.print("speed (m/s): ");
-  Serial.println(enc_drum.speed_mps);
+  Serial.println(enc_drum.speed_mps, 6);
   Serial.print("pos (m): ");
-  Serial.println(enc_drum.speed_mps);
+  Serial.println(enc_drum.position_m, 6);
+  Serial.print("Actuator out :");
+  Serial.println(speed_PID_vals.return_val*1000/u_bound + 1000);
   brake_servo.writeMicroseconds(speed_PID_vals.return_val*1000/u_bound + 1000);
+  delay(50);
   
 }

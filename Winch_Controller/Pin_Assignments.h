@@ -2,8 +2,9 @@
 #define _PINASSIGNMENTS_H   
 
 //drum encoder 
-#define CLKPIN_DRUM 4
-#define DTPIN_DRUM 5
+#define ENC_CSN 2
+#define ENC_CLK 3
+#define ENC_DO  4
 
 //motors & servos
 #define BRAKE_SERVO_PIN 7
