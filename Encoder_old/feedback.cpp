@@ -12,7 +12,7 @@ void resetEncoder(struct encoder_data * enc_data){
    enc_data->position_m = 0;
    current_pos = wire_drum.read();
    prev_pos = wire_drum.read();
-   read_time_uS = micros();
+   read_time_uS = micros(); 
 }
 
 void readEncoder(struct encoder_data * feedback_data){

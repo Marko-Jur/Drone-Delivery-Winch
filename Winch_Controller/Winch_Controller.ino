@@ -1,6 +1,6 @@
 #include "Winch_Libraries.h"
 #include "Pin_Assignments.h"
-#include "feedback.h"
+#include "Magnetic_Encoder.h"
 #include "PID.h"
 
 int32_t l_bound = 0;
@@ -19,18 +19,17 @@ void setup() {
   speed_controller.setConstants(1.0, 0.0, 0.0);
   speed_controller.begin(1000, 15000, 5, &speed_PID_vals);
   
-  resetEncoder(&enc_drum);
-
   enc_drum.drum_radius_m = 7.5*0.001;
   enc_drum.states_per_turn = 80;
 
+  encoderSetup(&enc_drum);
   brake_servo.attach(BRAKE_SERVO_PIN);
 
 }
 
 void loop() {
-
-  readEncoder(&enc_drum);
+  
+  calcEncData(&enc_drum);
   speed_PID_vals.target_val = 1.5;
   speed_PID_vals.current_val = enc_drum.speed_mps;
   Serial.print("speed (m/s): ");
